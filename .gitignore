@@ -71,4 +71,6 @@ local.properties
 
 .metadata/
 .recommenders/
+
 Servers/
+.DS_Store/
