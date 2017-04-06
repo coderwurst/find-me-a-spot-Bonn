@@ -15,13 +15,13 @@ TODO: Write usage instructions
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+5. Submit a pull request
 
 ## History
 TODO: Write history
 
 ## Credits
-TODO: Write credits
+Datasource: [Parkhäuser der BCP Bonn GmbH](https://opendata.bonn.de/dataset/7b40f445-29ac-45e0-b4c7-2b457998bd1c/resource/7b40f445-29ac-45e0-b4c7-2b457998bd1c)
 
 ## License
 TODO: Write license 
