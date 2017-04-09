@@ -3,6 +3,7 @@ package com.coderwurst.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -60,6 +61,20 @@ public class BonnServiceTest {
 		assertEquals("markt.txt", resultList.get(3).getBezeichnung());
 		assertEquals("muensterplatz.txt", resultList.get(4).getBezeichnung());
 		assertEquals("stadthaus.txt", resultList.get(5).getBezeichnung());
+	}
+	
+	@Test
+	public void testGetAvailableSpaces() {
+		Map <String, Integer> availableSpaces = service.getAvailableSpaces();
+		
+		assertNotNull(availableSpaces);
+		assertNotNull(availableSpaces.get("bahnhof"));
+		assertNotNull(availableSpaces.get("beethoven"));
+		assertNotNull(availableSpaces.get("friedensplatz"));
+		assertNotNull(availableSpaces.get("markt"));
+		assertNotNull(availableSpaces.get("muensterplatz"));
+		assertNotNull(availableSpaces.get("stadthaus"));
+		
 	}
 	
 }

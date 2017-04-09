@@ -2,6 +2,9 @@ package com.coderwurst.service;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.xml.bind.JAXB;
 
 import org.apache.commons.httpclient.HttpClient;
@@ -15,10 +18,6 @@ public class BonnService {
 
 	private static final int HTTP_OK = 200;
 	private String stadtBonnParkplatzAPI = "http://www.bcp-bonn.de/stellplatz/bcpinfo.xml";
-	
-	public Parkhaus unmarschalParkhausObject(String result) {
-		return JAXB.unmarshal(new StringReader(result), Parkhaus.class);
-	}
 	
 	public String getParkhausInformation() {
 		String result = null;
@@ -47,6 +46,26 @@ public class BonnService {
 
 	public Parkhaeuser unmarshalParkhausList() {		
 		return JAXB.unmarshal(new StringReader(getParkhausInformation()), Parkhaeuser.class);
+	}
+	
+	public Parkhaus unmarschalParkhausObject(String result) {
+		return JAXB.unmarshal(new StringReader(result), Parkhaus.class);
+	}
+
+	public Map<String, Integer> getAvailableSpaces() {
+		Map <String, Integer> listParkingSpaces = new HashMap<>();
+		
+		Parkhaeuser parkingBonn = unmarshalParkhausList();
+		
+		for (Parkhaus parkhaus : parkingBonn.getParkhaeuser()) {
+			listParkingSpaces.put(determineParkhausKey(parkhaus.getBezeichnung()), parkhaus.getFrei());
+		}
+		
+		return listParkingSpaces;
+	}
+
+	private String determineParkhausKey(String bezeichnung) {
+		return new String(bezeichnung.substring(0, bezeichnung.length()-4));
 	}
 
 }
