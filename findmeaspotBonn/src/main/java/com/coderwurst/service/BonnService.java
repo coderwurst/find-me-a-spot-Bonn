@@ -1,15 +1,24 @@
 package com.coderwurst.service;
 
 import java.io.IOException;
+import java.io.StringReader;
+
+import javax.xml.bind.JAXB;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+import com.coderwurst.dao.Parkhaus;
+
 public class BonnService {
 
 	private static final int HTTP_OK = 200;
 	private String stadtBonnParkplatzAPI = "http://www.bcp-bonn.de/stellplatz/bcpinfo.xml";
+	
+	public Parkhaus unmarschalParkhausObject(String result) {
+		return JAXB.unmarshal(new StringReader(result), Parkhaus.class);
+	}
 	
 	public String getParkhausInformation() {
 		String result = null;
