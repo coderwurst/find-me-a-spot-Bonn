@@ -2,13 +2,13 @@ package com.coderwurst.service;
 
 import java.io.IOException;
 import java.io.StringReader;
-
 import javax.xml.bind.JAXB;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+import com.coderwurst.dao.Parkhaeuser;
 import com.coderwurst.dao.Parkhaus;
 
 public class BonnService {
@@ -43,6 +43,10 @@ public class BonnService {
 		}
 		
 		return result;
+	}
+
+	public Parkhaeuser unmarshalParkhausList() {		
+		return JAXB.unmarshal(new StringReader(getParkhausInformation()), Parkhaeuser.class);
 	}
 
 }

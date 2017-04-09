@@ -2,9 +2,11 @@ package com.coderwurst.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import java.util.List;
 
 import org.junit.Test;
 
+import com.coderwurst.dao.Parkhaeuser;
 import com.coderwurst.dao.Parkhaus;
 
 public class BonnServiceTest {
@@ -21,7 +23,7 @@ public class BonnServiceTest {
 	}
 	
 	@Test
-	public void testGetSingleXmlObject() {
+	public void testUnmarshalSingleXmlObject() {
 		
 		String parkHausTestString = "<parkhaus>"
 				+ "<lfdnr>6</lfdnr>"
@@ -42,6 +44,22 @@ public class BonnServiceTest {
 		assertEquals(135, result.getFrei());
 		assertEquals(0, result.getStatus());
 		assertEquals(1, result.getTendenz());
+	}
+	
+	@Test
+	public void testUnmarshalParkhaeuserList() {
+		
+		Parkhaeuser result = service.unmarshalParkhausList();
+		List <Parkhaus> resultList = result.getParkhaeuser();
+		
+		assertNotNull(result);
+		assertEquals(6, resultList.size());
+		assertEquals("bahnhof.txt", resultList.get(0).getBezeichnung());
+		assertEquals("beethoven.txt", resultList.get(1).getBezeichnung());
+		assertEquals("friedensplatz.txt", resultList.get(2).getBezeichnung());
+		assertEquals("markt.txt", resultList.get(3).getBezeichnung());
+		assertEquals("muensterplatz.txt", resultList.get(4).getBezeichnung());
+		assertEquals("stadthaus.txt", resultList.get(5).getBezeichnung());
 	}
 	
 }
