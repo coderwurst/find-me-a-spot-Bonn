@@ -10,7 +10,35 @@
 		</div>
 		<b:Panel ui:field="availableSpacesList">
 			<b:FormLabel ui:field="serverStatus">loading...</b:FormLabel>
+			<b:Alert type="SUCCESS">
+	 		  <b.html:Strong text="Beethoven"/>
+	 		  <b.html:Br/>
+			  <b.html:Text text="..."/>
+	 		</b:Alert>
+	 		<b:Alert type="INFO">
+	 		  <b.html:Strong text="Friedensplatz"/>
+	 		  <b.html:Br/>
+			  <b.html:Text text="..."/>
+	 		</b:Alert>
+	 		
+			<b:Alert type="WARNING">
+			  <b.html:Strong text="Markt"/>
+	 		  <b.html:Br/>
+	 		  <b.html:Text text="..."/>
+	 		</b:Alert>
+	 		
+	 		<b:Alert type="DANGER">
+	 		  <b.html:Strong text="Münsterplatz"/>
+	 		  <b.html:Br/>
+	 		  <b.html:Text text="..."/>
+	 		</b:Alert>
+	 		
+	 		<b:Alert>
+	 		  <b.html:Strong text="Stadthaus"/>
+			  <b.html:Br/>
+	 		  <b.html:Text text="..."/>
+	 		</b:Alert>
 		</b:Panel>
-	</g:HTMLPanel>		 
+	</g:HTMLPanel>			 
 			 
 </ui:UiBinder>

@@ -6,6 +6,7 @@
 	<!-- Libs inherits -->
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
 	<inherits name="com.google.gwt.http.HTTP" />
+	<inherits name="com.google.gwt.xml.XML" />
 	
 	<entry-point class="com.coderwurst.client.FindMeASpot" />
 	
