@@ -1,24 +1,14 @@
-
 import CarPark from './model/CarPark'
+import carParkView from './view/CarParkView'
 
-const herokuCORS = 'https://cors-anywhere.herokuapp.com/';
-const parkingSpacesURL = 'http://www.bcp-bonn.de/stellplatz/bcpext.xml';
+const state = {};
 
-function getCarParkData() {
-    let request = new XMLHttpRequest();
-    let carParks = [];
-    request.open("GET", `${herokuCORS}${parkingSpacesURL}`);
-    request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-            const response = request.responseXML;
-            const body = Array.from(response.firstChild.children);
-            body.forEach((currentElement) => {
-                carParks.push(currentElement);
-            });
-            console.log(body);
-        }
-    };
-    request.send();
-}
+const getResults = async() => {
+    state.carPark = new CarPark();
+    const results = await state.carPark.getCarParkData();
 
-getCarParkData();
+    console.log('results: ' + results);
+
+};
+
+getResults();
