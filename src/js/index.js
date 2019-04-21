@@ -22,10 +22,11 @@ async function getCarParkData() {
                 result.push(currentElement);
             });
             
-            const json = converter.xml2json(request.responseText, {compact: true});
-            console.log("json: " + json);
+            const carparks = converter.xml2js(request.responseText, {compact: true});
+            const carparksString = JSON.stringify(carparks, null, 4); 
+            console.log("Converted JS Object: " + carparksString);
             
-            this.results = json;
+            this.results = carparks;
         }
     };
    request.send();
