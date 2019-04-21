@@ -23,7 +23,7 @@ export default class CarPark {
                 const json = converter.xml2json(request.responseText, {compact: true});
                 console.log("json: " + json);
                 
-                this.carParks = result;
+                this.results = json;
             }
         };
        request.send();

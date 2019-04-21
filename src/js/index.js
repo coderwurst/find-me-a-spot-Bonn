@@ -1,14 +1,14 @@
 import CarPark from './model/CarPark'
 import carParkView from './view/CarParkView'
+import './../style/app.css'
 
 const state = {};
 
 const getResults = async() => {
     state.carPark = new CarPark();
-    const results = await state.carPark.getCarParkData();
+    await state.carPark.getCarParkData();
 
-    console.log('results: ' + results);
-
+    carParkView.renderResults(state.carPark.carParks.results)
 };
 
 getResults();
