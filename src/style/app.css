@@ -1,13 +1,13 @@
 .container {
     display: grid;
-    grid-template-columns: 20% 1fr 1fr 20%;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-column-gap: 24px;
     grid-row-gap: 36px;
-    justify-items: stretch;
-    align-items: stretch;
-    justify-content: center;
-
 
     background-color: cyan;
+}
+
+.item {
+    place-self: center;
 }
