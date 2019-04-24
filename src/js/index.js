@@ -16,27 +16,29 @@ async function getCarParkData() {
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
             const response = request.responseXML;
-
-            const body = Array.from(response.firstChild.children);
-            body.forEach((currentElement) => {
-                result.push(currentElement);
-            });
-            
+        
             const jsObject = converter.xml2js(request.responseText, {compact: true});
+            const carParks = Array.from(jsObject.parkhaeuser.parkhaus);
+            carParks.forEach((currentElement) => {
+                var newCarPark = new CarPark(currentElement.lfdnr, currentElement.bezeichnung, currentElement.gesamt, currentElement.frei, currentElement.status, currentElement.tendenz);
+
+                result.push(newCarPark);
+            });
+
+            /* TESTING ONLY
             const carparks = jsObject.parkhaeuser;
             const carparksString = JSON.stringify(carparks, null, 4); 
-            console.log(`Car Park data: ${carparksString}`);
+            console.log(`Car Park data: ${carparksString}`);*/
 
-            this.results = carparks;
+            this.carParks = result;
+            console.log(this.carParks);
         }
     };
    request.send();
 }
 
 const getResults = async() => {
-    state.carPark = new CarPark();
     await getCarParkData();
-
 };
 
 getResults();
