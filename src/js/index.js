@@ -1,5 +1,5 @@
 import CarPark from './model/CarPark'
-import * as carParkView from './view/CarParkView'
+import { renderElements } from './view/CarParkView'
 import './../style/app.css'
 
 import converter from 'xml-js'
