@@ -1,19 +1,22 @@
-export default class CarParkView {
-    constructor (){
-        
-    }
+import { elements } from '../constants'
 
-    generateHTML() {
-        return `
-        <div class="item item-${this.id}">
-            <ul>
-                <li>Name: ${this.name}</li>
-                <li>No of Spaces: ${this.spaces}</li>
-                <li>Free Spaces: ${this.free}</li>
-                <li>Status: ${this.status}</li>
-                <li>Movement: ${this.movement}</li>
-            </ul>
-        </div>
-        `;
-    }
+export const renderElements = (carParks) => {
+    console.log(`CarParkView - carparks: ${carParks}`);
+    carParks.foreach((currentElement) => renderCarPark(currentElement));
+}
+
+const renderCarPark = (carPark) => {
+    const html =  `
+    <div class="item item-${carPark.id}">
+        <ul>
+            <li>Name: ${carPark.name}</li>
+            <li>No of Spaces: ${carPark.spaces}</li>
+            <li>Free Spaces: ${carPark.free}</li>
+            <li>Status: ${carPark.status}</li>
+            <li>Movement: ${carPark.movement}</li>
+        </ul>
+    </div>
+    `;
+
+    elements.carParkList.insertAdjacentHTML('beforeend', html);
 }
