@@ -2,7 +2,7 @@ import { elements } from '../constants'
 
 export const renderElements = (carParks) => {
     console.log(`CarParkView - carparks: ${carParks}`);
-    carParks.foreach((currentElement) => renderCarPark(currentElement));
+    carParks.forEach((currentElement) => renderCarPark(currentElement));
 }
 
 const renderCarPark = (carPark) => {
