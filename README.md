@@ -23,6 +23,7 @@ npm run start
 09.04.17 Console Version  
 06.04.17 Project Creation  
 16.04.19 Hit reset button
+28.04.19 Connection w/ API, display results on site
 
 ## Roadmap
 TODO:
