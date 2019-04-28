@@ -9,20 +9,24 @@ const herokuCORS = 'https://cors-anywhere.herokuapp.com/';
 const parkingSpacesURL = 'http://www.bcp-bonn.de/stellplatz/bcpext.xml';
 
 
-async function getCarParkData() {
+const getCarParkData = async () => {
     let request = new XMLHttpRequest();
-    let result = [];
+    state.carParks = [];
+
     request.open("GET", `${herokuCORS}${parkingSpacesURL}`);
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            const response = request.responseXML;
-        
+            // const response = request.responseXML;
             const jsObject = converter.xml2js(request.responseText, {compact: true});
+            console.log(`index - jsObject: ${jsObject}`);
             const carParks = Array.from(jsObject.parkhaeuser.parkhaus);
-            carParks.forEach((currentElement) => {
-                var newCarPark = new CarPark(currentElement.lfdnr, currentElement.bezeichnung, currentElement.gesamt, currentElement.frei, currentElement.status, currentElement.tendenz);
-
-                result.push(newCarPark);
+            console.log(`index - carPark array: ${JSON.stringify(carParks)}`);
+            carParks.forEach((currentElement, i) => {
+               
+                const newCarPark = new CarPark(currentElement.lfdnr._text, currentElement.bezeichnung._text, currentElement.gesamt._text, currentElement.frei._text, currentElement.status._text, currentElement.tendenz._text);
+                
+                console.log(`new car park ${i}: ${JSON.stringify(newCarPark)}`);
+                state.carParks.push(newCarPark);
             });
 
             /* TESTING ONLY
@@ -30,15 +34,10 @@ async function getCarParkData() {
             const carparksString = JSON.stringify(carparks, null, 4); 
             console.log(`Car Park data: ${carparksString}`);*/
 
-            this.carParks = result;
-            console.log(this.carParks);
+            renderElements(state.carParks);
         }
     };
-   request.send();
+   await request.send();
 }
 
-const getResults = async() => {
-    await getCarParkData();
-};
-
-getResults();
+getCarParkData();

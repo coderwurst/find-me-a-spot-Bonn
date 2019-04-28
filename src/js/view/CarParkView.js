@@ -12,8 +12,8 @@ const renderCarPark = (carPark) => {
             <li>Name: ${carPark.name}</li>
             <li>No of Spaces: ${carPark.spaces}</li>
             <li>Free Spaces: ${carPark.free}</li>
-            <li>Status: ${carPark.status}</li>
-            <li>Movement: ${carPark.movement}</li>
+            <li>Status: ${carPark.status === 0 ? 'open' : 'closed'}</li>
+            <li>Movement: ${carPark.movement === 1 ? 'steady' : (carPark.movement === 2 ? 'clearing out' : 'filling up')}</li>
         </ul>
     </div>
     `;
