@@ -2,9 +2,8 @@
 Website to make use of Bonn Data-set of Parking locations and spaces available in the city
 
 ## Tools
-Bonn Dataset && API https://opendata.bonn.de/dataset  
-Dataset packages & resources https://opendata.bonn.de/api/3/action/package_show?id=54ca0aef-96a9-4996-b9c8-e9a75414267b  
-Dataset Metadata https://opendata.bonn.de/api/3/action/resource_show?id=7b40f445-29ac-45e0-b4c7-2b457998bd1c  
+[Bonn Dataset API](https://opendata.bonn.de/dataset)  
+[Bonn Car Park Dataset](https://opendata.bonn.de/dataset/88753db4-558e-40c6-ae82-092f75e2b5c2/resource/88753db4-558e-40c6-ae82-092f75e2b5c2)
 
 ## Installation
 npm install
