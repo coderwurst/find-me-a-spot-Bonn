@@ -1,13 +1,13 @@
-import { elements } from '../constants'
+import { elements, images } from '../constants'
 
 export const renderElements = (carParks) => {
-    console.log(`CarParkView - carparks: ${carParks}`);
     carParks.forEach((currentElement) => renderCarPark(currentElement));
-}
+};
 
 const renderCarPark = (carPark) => {
     const html =  `
     <div class="item item-${carPark.id}">
+        <img src=${images[carPark.name]}></img>
         <ul>
             <li>Name: ${carPark.name}</li>
             <li>No of Spaces: ${carPark.spaces}</li>
