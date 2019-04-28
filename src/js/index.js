@@ -16,7 +16,6 @@ const getCarParkData = async () => {
     request.open("GET", `${herokuCORS}${parkingSpacesURL}`);
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            // const response = request.responseXML;
             const jsObject = converter.xml2js(request.responseText, {compact: true});
             console.log(`index - jsObject: ${jsObject}`);
             const carParks = Array.from(jsObject.parkhaeuser.parkhaus);
@@ -28,11 +27,6 @@ const getCarParkData = async () => {
                 console.log(`new car park ${i}: ${JSON.stringify(newCarPark)}`);
                 state.carParks.push(newCarPark);
             });
-
-            /* TESTING ONLY
-            const carparks = jsObject.parkhaeuser;
-            const carparksString = JSON.stringify(carparks, null, 4); 
-            console.log(`Car Park data: ${carparksString}`);*/
 
             renderElements(state.carParks);
         }
